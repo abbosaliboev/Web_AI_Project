@@ -1,0 +1,26 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #000;
+  color: white;
+
+
+  .nav-item {
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #444;
+    }
+
+    svg {
+      font-size: 28px;
+    }
+  }
+
+  img {
+    border-radius: 8px;
+  }
+}

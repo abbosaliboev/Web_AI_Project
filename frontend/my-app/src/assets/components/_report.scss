@@ -1,0 +1,270 @@
+@use '../_variables.scss';
+
+.search-results-page {
+  animation: fade-slide 0.3s ease-in-out;
+  padding: 20px; // Boshqa pagelardagi padding bilan moslashtirildi
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100vw; // Sahifa ekran kengligidan oshmaydi
+  overflow-x: hidden; // Sahifada X o'qida scrollni o'chirish
+
+  .summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%; // Yonlarga chiqib ketmaslik uchun
+
+    .date-picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      max-width: 100%; // Inputlar yonlarga chiqib ketmasligi uchun
+
+      input[type="date"] {
+        border-radius: 24px;
+        padding: 6px 12px;
+        font-size: 0.95rem;
+        width: 100%;
+        max-width: 160px; // Desktopda inputlar kichikroq bo'ladi
+        box-sizing: border-box;
+        border: 1px solid #ced4da;
+      }
+    }
+
+    .button-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex: 0 1 auto;
+      max-width: 100%; // Tugmalar yonlarga chiqib ketmasligi uchun
+    }
+
+    .btn {
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      background-color: white;
+      border: 1px solid #ced4da;
+      font-size: 0.95rem;
+      white-space: nowrap;
+
+      i {
+        padding-right: 6px;
+      }
+    }
+  }
+
+  .search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%; // Yonlarga chiqib ketmaslik uchun
+
+    h5 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333; // InfoPage bilan moslik uchun
+    }
+
+    .search-input {
+      max-width: 240px;
+      border-radius: 24px;
+      padding: 6px 12px;
+      font-size: 0.95rem;
+      border: 1px solid #ced4da;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .table-wrapper {
+    width: 100%;
+    max-width: 100%; // Table wrapper yonlarga chiqib ketmasligi uchun
+    overflow-x: hidden; // Table wrapperda scroll o'chiriladi
+    border-radius: 15px; // InfoPage va SummaryPage kartalari bilan moslik uchun
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Kartalar bilan bir xil soya
+    background-color: #fff; // Kartalar bilan mos fon
+
+    .table-responsive-x {
+      overflow-x: auto; // Faqat table ichida X scroll
+      -webkit-overflow-scrolling: touch;
+      background-color: #f8f9fa;
+      
+
+      table {
+        min-width: 600px; // Table scroll bo'lishi uchun
+        width: 100%;
+        border-collapse: separate; // Border-radius ishlashi uchun
+        border-spacing: 0; // Bo'shliqlarni olib tashlash
+        border-radius: 10px; // Jadvalga border-radius qo'shildi
+        overflow: hidden; // Radius to'g'ri ko'rinishi uchun
+
+        th,
+        td {
+          white-space: nowrap;
+          vertical-align: middle;
+          text-align: center;
+          font-size: 0.95rem;
+          background-color: #f8f9fa;
+          padding: 8px;
+          border: 1px solid #dee2e6;
+
+          // Birinchi va oxirgi qatorlar uchun radius
+          &:first-child {
+            border-left: 1px solid #dee2e6;
+          }
+          &:last-child {
+            border-right: 1px solid #dee2e6;
+          }
+        }
+
+        th {
+          background-color: #7a8193;
+          color: white;
+          font-weight: 600;
+
+          // Birinchi qatorning burchaklari
+          &:first-child {
+            border-top-left-radius: 10px;
+          }
+          &:last-child {
+            border-top-right-radius: 10px;
+          }
+        }
+
+        td {
+          .btn-sm {
+            padding: 4px 8px;
+            font-size: 0.85rem;
+            border-radius: 24px; // Tugmalar boshqa pagelardagi kabi
+          }
+        }
+
+        // Oxirgi qatorning burchaklari
+        tr:last-child {
+          td:first-child {
+            border-bottom-left-radius: 10px;
+          }
+          td:last-child {
+            border-bottom-right-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    .summary-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+
+      .date-picker {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+
+        input[type="date"] {
+          max-width: 100%;
+        }
+      }
+
+      .button-group {
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+
+        .btn {
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+    }
+
+    .search-section {
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 100%;
+
+      .search-input {
+        max-width: 100%;
+      }
+
+      h5 {
+        font-size: 1.1rem;
+      }
+    }
+
+    .table-wrapper {
+      .table-responsive-x {
+        table {
+          min-width: 500px; // Mobil ekranlarda scrollni ta'minlash
+
+          th,
+          td {
+            font-size: 0.85rem;
+            padding: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+
+    .summary-header {
+      gap: 0.5rem;
+
+      .date-picker {
+        gap: 6px;
+      }
+
+      .button-group {
+        .btn {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .search-section {
+      h5 {
+        font-size: 1rem;
+      }
+    }
+
+    .table-wrapper {
+      .table-responsive-x {
+        table {
+          min-width: 400px; // Juda kichik ekranlar uchun
+
+          th,
+          td {
+            font-size: 0.8rem;
+            padding: 4px;
+
+            .btn-sm {
+              font-size: 0.75rem;
+              padding: 3px 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

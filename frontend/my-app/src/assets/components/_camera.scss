@@ -1,0 +1,211 @@
+// src/pages/CameraPage.scss
+@use '../_variables.scss';
+
+
+.camera-page {
+    animation: fade-slide 0.3s ease-in-out;
+    padding: 3% 4% !important;
+    .alerts-card {
+        background: #fff;
+        padding: 1.5rem 1.5rem 0rem 1.5rem;
+        border-radius: 10px;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+      
+        .alert-filter {
+          flex-shrink: 0;
+          border: 2px solid variables.$secondary;
+          border-radius: 10px;
+        }
+      
+        .alert-list {
+          overflow-y: auto;
+          flex-grow: 1;
+          margin-top: 0.5rem;
+      
+          scrollbar-width: none; 
+          -ms-overflow-style: none; 
+        
+          &::-webkit-scrollbar {
+            display: none; 
+          }
+
+          .alert-item {
+            background-color: variables.$secondary-color;
+            border-radius: 8px;
+            cursor: pointer;
+      
+            &:hover {
+              background-color: variables.$hover;
+            }
+      
+            span {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+      
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    
+      .data-filter {
+        input {
+          border-radius: 10px;
+          padding: 0.4rem 0.8rem;
+        }
+      }
+    
+      .photo-video-toggle {
+        button {
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+
+        }
+
+      }
+    }
+      
+    .video-section {
+      padding: 1rem;
+      padding-bottom: 80px !important;
+      border-radius: 10px;
+      .filter-bar {
+        .form-control {
+          width: 60%;
+        }
+  
+        button {
+          border-radius: 10px;
+          margin-left: 0.5rem;
+        }
+      }
+  
+      .video-wrapper {
+  
+        img {
+          width: 100%;
+          height: 40% !important;
+          display: block;
+          border: 3px solid #3b4861 !important;
+          border-radius: 8px;
+        }
+      }
+  
+      .playback-bar {
+        .timeline {
+          height: 8px;
+          background-color: #cfd8dc;
+          border-radius: 5px;
+          position: relative;
+  
+          .bar {
+            width: 30%;
+            height: 100%;
+            background-color: #007bff;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  
+
+    .stats-section {
+      .alert-box {
+        width: 50%;
+        background-color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999px;
+        font-weight: 600;
+        color: #000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .summary-card {
+        background-color: #15233c;
+        border-radius: 10px;
+        .label {
+          margin-bottom: 0.25rem;
+          font-size: 1.5rem;
+        }
+        .count-box{
+          width: 30%;
+          margin: 0 auto;
+        }
+
+        .count {
+          font-size: 2rem;
+        }
+
+        .summary-icon {
+          margin: 0 auto;
+          background-color: #fff;
+          border-radius: 999px;
+          padding: 0.25rem;
+        }
+      }
+
+      .chart {
+        h6 {
+          font-weight: 600;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .detections {
+        background: #fff;
+        padding: 1.5rem 1.5rem 0rem 1.5rem;
+        border-radius: 10px;
+        height: 28vh;
+        display: flex;
+        flex-direction: column;
+      
+        h6 {
+          flex-shrink: 0;
+          font-weight: 600;
+          margin-bottom: 1rem;
+        }
+      
+        .detect-list {
+          overflow-y: auto;
+          flex-grow: 1;
+      
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+      
+          &::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
+      
+          .detect-row {
+            background-color: variables.$secondary-color;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+      
+            &:hover {
+              background-color: variables.$hover;
+            }
+      
+            span {
+              font-size: 1.1rem;
+            }
+          }
+        }
+      }
+      
+    }
+
+  }
+  
