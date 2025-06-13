@@ -91,6 +91,19 @@
     "Save": "저장",
     "Delete All": "전체 삭제",
     "Close Controls": "컨트롤 닫기",
-    "At least 3 points required": "최소 3개의 점이 필요합니다"
+    "At least 3 points required": "최소 3개의 점이 필요합니다",
+    "report_title": "보고서",
+    "worker_name": "작업자 이름",
+    "worker_id": "작업자 ID",
+    "department": "부서",
+    "supervisor": "감독자",
+    "select": "선택",
+    "no_helmet": "헬멧 없음",
+    "no_vest": "조끼 없음",
+    "no_glass": "보호안경 없음",
+    "no_gloves": "장갑 없음",
+    "cancel": "취소",
+    "send": "전송",
+    "zoom_icon": "클릭하여 확대"
   }
   

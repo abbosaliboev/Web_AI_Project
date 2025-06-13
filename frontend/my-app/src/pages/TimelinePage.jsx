@@ -1,12 +1,17 @@
 import React, { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+
+// Assets
 import "../assets/components/_timeline.scss";
 import icons from "../assets/constants/icons";
-import sampleImage from "../assets/images/test.png"; // preview image uchun
-import { useTranslation } from "react-i18next";
+import sampleImage from "../assets/images/test.png";
+
+// Modal
+import ReportModal from "../components/ReportModal";
 
 const TimelinePage = () => {
   const { t } = useTranslation();
-  // Alerts data shu yerning ichida yoziladi
+
   const alerts = [
     { camera: "Cam 1", timestamp: "2025-02-12T18:25:00", alert_type: "Helmet" },
     { camera: "Cam 1", timestamp: "2025-02-12T18:12:00", alert_type: "Vest" },
@@ -20,6 +25,8 @@ const TimelinePage = () => {
 
   const [selectedCam, setSelectedCam] = useState("Cam 1");
   const [filter, setFilter] = useState("most_recent");
+  const [showModal, setShowModal] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState(null);
 
   const sortedAlerts = useMemo(() => {
     return [...alerts].sort((a, b) =>
@@ -34,13 +41,24 @@ const TimelinePage = () => {
 
   const formatTime = (str) => new Date(str).toLocaleString();
 
+  const handleRecordClick = (record) => {
+    setSelectedRecord(record);
+    setShowModal(true);
+  };
+
+  const handleReportSubmit = (reportData) => {
+    console.log("Report submitted:", reportData);
+    setShowModal(false);
+  };
+
   return (
     <div className="container-fluid timeline-page p-4">
       <div className="row">
-        
-        {/* Alerts panel */}
+
+        {/* Left Panel: Alerts */}
         <div className="col-12 col-lg-3 px-2 alerts-panel">
           <h2 className="mb-4 fw-bold">{t("alertsTitle")}</h2>
+
           <div className="alerts-card">
             <div className="alert-filter mb-2">
               <select
@@ -52,6 +70,7 @@ const TimelinePage = () => {
                 <option value="oldest">{t("filterOldest")}</option>
               </select>
             </div>
+
             <div className="alert-list">
               {sortedAlerts.map((alert, i) => (
                 <div
@@ -71,13 +90,12 @@ const TimelinePage = () => {
           </div>
         </div>
 
-        {/* Archive */}
+        {/* Right Panel: Archive */}
         <div className="col-12 col-lg-9">
           <h2 className="fw-bold mb-4">{t("archiveTitle")}</h2>
-          
-          {/* White container */}
+
           <div className="archive-container p-4 rounded shadow-sm">
-            {/* Camera selection buttons */}
+            {/* Camera selector */}
             <div className="buttons mb-3">
               {uniqueCams.map((cam) => (
                 <button
@@ -92,10 +110,15 @@ const TimelinePage = () => {
 
             <hr />
 
-            {/* Archive records */}
+            {/* Archive list */}
             <div className="record-list">
               {archiveRecords.map((rec, i) => (
-                <div key={i} className="record-card p-3 mb-3 rounded shadow-sm">
+                <div
+                  key={i}
+                  className="record-card p-3 mb-3 rounded shadow-sm"
+                  onClick={() => handleRecordClick(rec)}
+                  style={{ cursor: "pointer" }}
+                >
                   <div className="d-flex align-items-center card-in">
                     <img
                       src={sampleImage}
@@ -113,8 +136,8 @@ const TimelinePage = () => {
                         <strong>{t("time")}:</strong> {formatTime(rec.timestamp)}
                       </p>
                       <p className="mb-0">
-
-                        <strong>{t("situation")}:</strong> {t("detect", { type: rec.alert_type })}
+                        <strong>{t("situation")}:</strong>{" "}
+                        {t("detect", { type: rec.alert_type })}
                       </p>
                     </div>
                   </div>
@@ -123,8 +146,16 @@ const TimelinePage = () => {
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* Modal */}
+      {showModal && selectedRecord && (
+        <ReportModal
+          record={selectedRecord}
+          onClose={() => setShowModal(false)}
+          onSubmit={handleReportSubmit}
+        />
+      )}
     </div>
   );
 };

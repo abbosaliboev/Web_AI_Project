@@ -92,6 +92,19 @@
     "Save": "Save",
     "Delete All": "Delete All",
     "Close Controls": "Close Controls",
-    "At least 3 points required": "At least 3 points are required"
+    "At least 3 points required": "At least 3 points are required",
+    "report_title": "Report",
+    "worker_name": "Worker Name",
+    "worker_id": "Worker ID",
+    "department": "Department",
+    "supervisor": "Supervisor",
+    "select": "Select",
+    "no_helmet": "No Helmet",
+    "no_vest": "No Vest",
+    "no_glass": "No Glass",
+    "no_gloves": "No Gloves",
+    "cancel": "Cancel",
+    "send": "Send",
+    "zoom_icon": "Click to zoom"
   }
   
