@@ -7,6 +7,7 @@ import HeatmapOverview from "../components/Summary/HeatmapOverview";
 import ViolationRanking from "../components/Summary/ViolationRanking";
 import "../assets/components/_summary.scss";
 import { useTranslation } from "react-i18next";
+import { useOutletContext } from "react-router-dom";
 
 const Summary = () => {
   const { t } = useTranslation();
@@ -18,6 +19,18 @@ const Summary = () => {
   const [safetyScore, setSafetyScore] = useState(0.72);
   const [violationRanking, setViolationRanking] = useState([]);
   const [safetyStats, setSafetyStats] = useState([]);
+
+
+  const { refreshKey } = useOutletContext();
+  const [data, setData] = useState(null);
+
+  const fetchData = async () => {
+    console.log("Summary page refreshed!");
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [refreshKey]);
 
   const dummyData = {
     incidentTrend: {

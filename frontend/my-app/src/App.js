@@ -1,10 +1,13 @@
+// src/App.js
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CameraProvider } from "./context/CameraContext";
 import "./assets/styles.scss";
-
+import "./WelcomePage/WelcomePage.css";
+// Layout
 import MainLayout from "./layout/MainLayout";
-import Login from "./pages/Login";
+
+// Dashboard Pages
 import Home from "./pages/Home";
 import SettingsPage from "./pages/SettingsPage";
 import Camera from "./pages/Camera";
@@ -12,15 +15,25 @@ import Summary from "./pages/Summary";
 import TimelinePage from "./pages/TimelinePage";
 import ReportPage from "./pages/ReportPage";
 import InfoPage from "./pages/InfoPage";
-// App.js yoki Summary.jsx (1 marta bajarilishi kifoya)
+import Login from "./pages/Login";
+
+// Welcome Pages
+import WelcomeHome from "./WelcomePage/Home/Home/Home";
+import About from "./WelcomePage/Home/About/About";
+import Pricing from "./WelcomePage/Home/Pricing/Pricing";
+import Services from "./WelcomePage/Home/Services/Services";
+import Contact from "./WelcomePage/Home/Contact/Contact";
+import NavBar from "./WelcomePage/Home/NavBar/NavBar";
+
+// Chart.js registratsiyasi
 import {
   Chart as ChartJS,
   LineElement,
   PointElement,
   BarElement,
-  ArcElement,          
-  CategoryScale,        
-  LinearScale,          
+  ArcElement,
+  CategoryScale,
+  LinearScale,
   Tooltip,
   Legend,
 } from 'chart.js';
@@ -29,25 +42,50 @@ ChartJS.register(
   LineElement,
   PointElement,
   BarElement,
-  ArcElement,           
-  CategoryScale,      
+  ArcElement,
+  CategoryScale,
   LinearScale,
   Tooltip,
   Legend
 );
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // demo: true
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // boshlanishda false
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
     <Router>
       <CameraProvider>
         <Routes>
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+
+          {/* === Welcome Page === */}
           <Route
             path="/"
-            element={<MainLayout isAuthenticated={isAuthenticated} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}
+            element={
+              <>
+                <NavBar />
+                <WelcomeHome />
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+
+          {/* === Login Page === */}
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+
+          {/* === Dashboard Layout === */}
+          <Route
+            path="/dashboard"
+            element={
+              <MainLayout
+                isAuthenticated={isAuthenticated}
+                isDarkMode={isDarkMode}
+                setIsDarkMode={setIsDarkMode}
+              />
+            }
           >
             <Route index element={<Home />} />
             <Route path="settings" element={<SettingsPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
@@ -57,6 +95,7 @@ function App() {
             <Route path="report" element={<ReportPage />} />
             <Route path="info" element={<InfoPage />} />
           </Route>
+
         </Routes>
       </CameraProvider>
     </Router>

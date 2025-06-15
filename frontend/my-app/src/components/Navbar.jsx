@@ -19,7 +19,7 @@ const Navbar = ({ onToggleSidebar, onRefreshMain, activePage }) => {
   };
 
   const handleSettingsClick = () => {
-    navigate("/settings");
+    navigate("/dashboard/settings");
   };
 
   return (

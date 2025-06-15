@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/components/_report.scss";
 import { useTranslation } from "react-i18next";
+import { useOutletContext } from "react-router-dom";
 
 const ReportPage = () => {
     const { t } = useTranslation();
@@ -62,6 +63,12 @@ const ReportPage = () => {
       newData[globalIndex].status === "ALERT" ? "ALERTED" : "ALERT";
     setData(newData);
   };
+
+  const { refreshKey } = useOutletContext();
+
+  useEffect(() => {
+    console.log("Report page refreshed");
+  }, [refreshKey]);
 
   return (
     <div className="search-results-page">

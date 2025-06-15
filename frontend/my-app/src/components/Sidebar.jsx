@@ -20,11 +20,11 @@ const Sidebar = ({ toggleSidebar, setActivePage }) => {
   const navigate = useNavigate();
 
   const menuItems = [
-    { key: "home", labelKey: "home", icon: <FaHome />, path: "/" },
-    { key: "summary", labelKey: "summary", icon: <FaChartPie />, path: "/summary" },
-    { key: "timeline", labelKey: "timeline", icon: <FaClock />, path: "/timeline" },
-    { key: "report", labelKey: "report", icon: <FaFileAlt />, path: "/report" },
-    { key: "info", labelKey: "info", icon: <FaInfoCircle />, path: "/info" },
+    { key: "home", labelKey: "home", icon: <FaHome />, path: "/dashboard" },
+    { key: "summary", labelKey: "summary", icon: <FaChartPie />, path: "/dashboard/summary" },
+    { key: "timeline", labelKey: "timeline", icon: <FaClock />, path: "/dashboard/timeline" },
+    { key: "report", labelKey: "report", icon: <FaFileAlt />, path: "/dashboard/report" },
+    { key: "info", labelKey: "info", icon: <FaInfoCircle />, path: "/dashboard/info" },
   ];
 
   const handleMenuClick = (item) => {

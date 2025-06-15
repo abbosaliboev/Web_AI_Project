@@ -52,7 +52,7 @@ const CardGrid = () => {
             <div key={card.id} className="col-12 col-sm-12 col-lg-12 col-xl-12 px-4">
               <div
                 className="card card-camera shadow-sm overflow-hidden"
-                onClick={() => navigate(`/camera/${card.id}`)}
+                onClick={() => navigate(`/dashboard/camera/${card.id}`)}
                 style={{ cursor: "pointer", position: "relative" }}
               >
                 <div className="card-header d-flex justify-content-between align-items-center bg-light">

@@ -6,6 +6,8 @@ import { videoStreams } from "../api/videoStreamURLs";
 import { CameraContext } from "../context/CameraContext";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { useOutletContext } from "react-router-dom";
+
 
 const Camera = () => {
   const { id } = useParams();
@@ -113,6 +115,12 @@ const Camera = () => {
     if (type === "fall") return icons.fall;
     return icons.default;
   };
+
+  const { refreshKey } = useOutletContext();
+
+  useEffect(() => {
+    console.log("Camera page refreshed");
+  }, [refreshKey]);
 
   return (
     <div className="container-fluid camera-page">

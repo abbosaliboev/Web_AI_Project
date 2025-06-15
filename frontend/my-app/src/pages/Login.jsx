@@ -21,7 +21,7 @@ const Login = ({ setIsAuthenticated }) => {
       if (rememberMe) {
         localStorage.setItem("isAuthenticated", "true");
       }
-      navigate("/");
+      navigate("/dashboard");
     } else {
       setError("Invalid email or password");
     }

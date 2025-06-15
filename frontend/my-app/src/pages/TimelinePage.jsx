@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useOutletContext } from "react-router-dom";
 
 // Assets
 import "../assets/components/_timeline.scss";
@@ -50,6 +51,14 @@ const TimelinePage = () => {
     console.log("Report submitted:", reportData);
     setShowModal(false);
   };
+
+  const { refreshKey } = useOutletContext();
+
+  useEffect(() => {
+    console.log("Timeline page refreshed");
+    // fetchTimelineData();
+  }, [refreshKey]);
+
 
   return (
     <div className="container-fluid timeline-page p-4">

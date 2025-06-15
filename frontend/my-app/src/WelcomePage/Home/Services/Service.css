@@ -1,0 +1,53 @@
+.achieve .achievement {
+    padding: 20px;
+    height: 170px;
+    width: 400px;
+    max-width: 95%;
+    text-align: center;
+    box-shadow: 10px 10px 40px #9ddef0e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #5e5e5e;
+    border-radius: 40px;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+  
+  .achieve-icon {
+    font-size: 60px;
+    color: #3163fc;
+    transition: color 0.4s ease;
+  }
+  
+  .achieve-num {
+    font-size: 50px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+  
+
+  .achieve:nth-child(1) .achievement {
+    background: linear-gradient(to right, rgba(4, 182, 231, 0.774), #1b8cd7);
+    color: white;
+  }
+  .achieve:nth-child(1) .achievement .achieve-icon {
+    color: white;
+  }
+  
+
+  .achieve .achievement:hover {
+    background: linear-gradient(to right, rgba(4, 182, 231, 0.774), #1b8cd7);
+    color: white;
+  }
+  .achieve .achievement:hover .achieve-icon {
+    color: white;
+  }
+  
+ 
+  .achieve:nth-child(2) .achievement,
+  .achieve:nth-child(3) .achievement,
+  .achieve:nth-child(4) .achievement {
+    border-radius: 40px !important;
+    margin: 10px;
+  }
