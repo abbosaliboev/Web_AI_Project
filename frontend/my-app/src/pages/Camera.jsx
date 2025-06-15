@@ -31,13 +31,13 @@ const Camera = () => {
         const alertType = alert.alert_type ? alert.alert_type.toLowerCase() : "unknown";
         console.log(`Alert ID: ${alert.id}, Alert type: ${alertType}, Timestamp: ${alert.timestamp}`);
         if (alertType === "no_helmet") acc.noHelmet += 1;
-        else if (alertType === "danger_zone") acc.dangerZone += 1;
-        else if (alertType === "fire") acc.fire += 1;
-        else if (alertType === "fall") acc.fall += 1;
+        else if (alertType === "no_vest") acc.noVest += 1;
+        else if (alertType === "no_glass") acc.noGlass += 1;
+        else if (alertType === "no_gloves") acc.noGloves += 1;
         else acc.unknown += 1;
         return acc;
       },
-      { noHelmet: 0, dangerZone: 0, fire: 0, fall: 0, unknown: 0 }
+      { noHelmet: 0, noVest: 0, noGlass: 0, noGloves: 0, unknown: 0 }
     );
     console.log("Counts:", counts);
     return counts;
@@ -175,10 +175,10 @@ const Camera = () => {
         {/* Video feed */}
         <div className="col-12 col-lg-6 px-3">
           <div className="buttons d-flex justify-content-between align-items-center mb-4">
-            <div className="data-filter d-flex align-items-center gap-2">
+            {/* <div className="data-filter d-flex align-items-center gap-2">
               <input type="date" className="form-control" style={{ maxWidth: "200px" }} />
               <input type="time" className="form-control" style={{ maxWidth: "150px" }} />
-            </div>
+            </div> */}
             <div className="photo-video-toggle d-flex gap-2">
               <button className="btn bg-light">
                 <i className="bi bi-camera text-dark"></i>
@@ -215,10 +215,10 @@ const Camera = () => {
             <div className="summary-card p-4 rounded text-white">
               <div className="row text-center">
                 {[
-                  { label: "No Helmet", icon: icons.helmet, count: alertCounts.noHelmet },
-                  { label: "Danger Zone", icon: icons.zone, count: alertCounts.dangerZone },
-                  { label: "Fire", icon: icons.fire, count: alertCounts.fire },
-                  { label: "Fall", icon: icons.fall, count: alertCounts.fall },
+                  { label: "Helmet", icon: icons.helmet, count: alertCounts.noHelmet },
+                  { label: "Vest", icon: icons.vest, count: alertCounts.noVest },
+                  { label: "Glass", icon: icons.glass, count: alertCounts.noGlass },
+                  { label: "Gloves", icon: icons.gloves, count: alertCounts.noGloves },
                 ].map(({ label, icon, count }) => (
                   <div className="col-6 mb-3" key={label}>
                     <div className="label">{label}</div>
@@ -232,15 +232,8 @@ const Camera = () => {
                 ))}
               </div>
             </div>
-            {/* <div className="chart p-3 bg-white rounded shadow-sm">
-              <h6>Line Chart</h6>
-              <img
-                src="https://storage.googleapis.com/dycr-web/image/topic/chartjs/v2/line-graph.png"
-                alt="chart"
-                className="img-fluid"
-              />
-            </div> */}
-            <div className="detections bg-white rounded shadow-sm">
+            
+            {/* <div className="detections bg-white rounded shadow-sm">
               <h6>{t("detections")}</h6>
               <div className="detect-list">
                 <div className="detect-row d-flex justify-content-between mb-2">
@@ -256,7 +249,7 @@ const Camera = () => {
                   <span>9</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

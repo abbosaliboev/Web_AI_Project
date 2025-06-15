@@ -15,8 +15,8 @@
   
   .card:hover {
     border-color: #3da4c9;
-    box-shadow: 5px 5px 50px #3b6bcc81;
-    background-color: #f0f8ff; 
+    box-shadow: 2px 2px 20px #3b6bcc44;
+
   }
   
   /* Price amount */
