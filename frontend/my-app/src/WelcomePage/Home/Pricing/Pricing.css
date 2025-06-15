@@ -1,0 +1,121 @@
+/* Pricing container */
+.pricing-container {
+    background-position: right;
+    margin-bottom: 0;
+  }
+  
+  /* Card style */
+  .card {
+    border: 1px solid transparent; 
+    box-shadow: 5px 5px 50px #3c8bda66;
+    height: 550px;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+  }
+  
+  .card:hover {
+    border-color: #3da4c9;
+    box-shadow: 5px 5px 50px #3b6bcc81;
+    background-color: #f0f8ff; 
+  }
+  
+  /* Price amount */
+  .card-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1b7cd7;
+    margin-bottom: 10px;
+  }
+  
+  /* Plan name */
+  .price-tag {
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 1px solid #1b7cd7;
+    padding-bottom: 20px;
+    color: #545454;
+  }
+  
+  /* Hover effect on price-tag */
+  .card:hover .price-tag {
+    border-bottom: none;
+    color: #545454;
+  }
+  
+  /* Feature list */
+  .global-list li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  /* Pricing button */
+  .pricing-btn {
+    text-align: center;
+    display: none;
+    margin-top: 10px;
+  }
+  
+  .card:hover .pricing-btn {
+    display: block;
+  }
+  
+  /* Responsive media queries */
+  @media screen and (max-width: 1024px) {
+    .card {
+      height: 700px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+      height: auto;
+    }
+  
+    .card-text ul li {
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  
+  @media screen and (max-width: 548px) {
+    .card {
+      height: auto;
+    }
+  }
+  
+  @media screen and (max-width: 399px) {
+    .card {
+      box-shadow: 5px 5px 50px #1b79d7;
+      height: auto;
+    }
+  
+    .price-tag {
+      border-bottom: 1px solid #1b79d7;
+    }
+  }
+  
+  @media screen and (max-width: 330px) {
+    .card {
+      box-shadow: 5px 5px 50px #1b79d7;
+      height: auto;
+    }
+  
+    .price-tag {
+      border-bottom: 1px solid #1b79d7;
+    }
+  }
+  
+  @media screen and (max-width: 280px) {
+    .card {
+      box-shadow: 5px 5px 50px #1b79d7;
+      height: auto;
+    }
+  
+    .card-text ul li {
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+  }

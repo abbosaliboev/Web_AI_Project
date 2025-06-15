@@ -1,0 +1,57 @@
+.heading {
+    font-weight: 600;
+    font-size: 55px;
+    color: #0D052E;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .banner {
+    padding: 50px 80px;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+  
+  /* TEXT: fade-in + move up */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out forwards;
+  }
+  
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* IMAGE: scale up */
+  .scale-up {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: scaleIn 0.7s ease-out 0.2s forwards;
+  }
+  
+  @keyframes scaleIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* RESPONSIVE HEADINGS */
+  @media screen and (max-width: 768px) {
+    .heading {
+      font-size: 55px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .heading {
+      font-size: 35px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .heading {
+      font-size: 30px;
+    }
+  }

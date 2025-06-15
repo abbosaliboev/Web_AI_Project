@@ -1,0 +1,81 @@
+/* WelcomePage.css */
+
+html{
+    scroll-behavior: smooth !important;
+  }
+  body{
+    background-color: #FAFFFD;
+    overflow-x: hidden;
+  }
+  p{
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .p-text{
+    color: #8D8D8D;
+    font-weight: 400;
+  }
+  
+  /* Global button styles */
+  
+  .global-btn {
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 10px 25px;
+    color: #fff;
+    font-weight: 500;
+    background: #3163fc;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    outline: none; 
+  }
+  
+  .global-btn:hover {
+    background: #507bff;
+  }
+  
+  .global-btn:focus {
+    box-shadow: 0 0 0 2px rgba(49, 99, 252, 0.4); /* fokusda tashqi yorug'lik */
+    transform: translateY(-1px);
+  }
+  
+  /* section styles */
+  
+  section{
+    background-color: #FAFFFD;
+    padding: 60px 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .section-title{
+    font-weight: 600;
+    font-size: 45px;
+    font-family: "Poppins", sans-serif;
+  }
+  @media screen and (max-width: 768px){
+    .section-title{
+      font-size: 35px;
+    }
+  }
+  @media screen and (max-width: 450px){
+    .section-title{
+      font-size: 27px;
+    }
+  }
+  /*NavBar Styles */
+   .nav-link:hover, .nav-link:active, .nav-link:focus{
+     font-weight: bold;
+   }
+   .nav-link:last-child{
+     padding: 0;
+   }
+  
+   /* Global list styles */
+  .global-list li{
+    list-style: none;
+    margin-bottom: 20px;
+  }
