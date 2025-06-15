@@ -6,6 +6,7 @@ import { useOutletContext } from "react-router-dom";
 import "../assets/components/_timeline.scss";
 import icons from "../assets/constants/icons";
 import sampleImage from "../assets/images/test.png";
+import axios from "axios";
 
 // Modal
 import ReportModal from "../components/ReportModal";
@@ -13,21 +14,22 @@ import ReportModal from "../components/ReportModal";
 const TimelinePage = () => {
   const { t } = useTranslation();
 
-  const alerts = [
-    { camera: "Cam 1", timestamp: "2025-02-12T18:25:00", alert_type: "Helmet" },
-    { camera: "Cam 1", timestamp: "2025-02-12T18:12:00", alert_type: "Vest" },
-    { camera: "Cam 1", timestamp: "2025-02-12T18:05:00", alert_type: "Helmet" },
-    { camera: "Cam 2", timestamp: "2025-02-12T16:45:00", alert_type: "NoVest" },
-    { camera: "Cam 2", timestamp: "2025-02-12T18:12:00", alert_type: "Vest" },
-    { camera: "Cam 3", timestamp: "2025-02-12T18:25:00", alert_type: "Helmet" },
-    { camera: "Cam 4", timestamp: "2025-02-12T17:54:00", alert_type: "Vest" },
-    { camera: "Cam 4", timestamp: "2025-02-12T16:45:00", alert_type: "NoVest" },
-  ];
+  const [alerts, setalerts ]= useState([])
 
   const [selectedCam, setSelectedCam] = useState("Cam 1");
   const [filter, setFilter] = useState("most_recent");
   const [showModal, setShowModal] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/getalerts")
+      .then(res => {
+        setalerts(res.data);
+      })
+    
+  }, []);
+
+
 
   const sortedAlerts = useMemo(() => {
     return [...alerts].sort((a, b) =>
@@ -37,8 +39,8 @@ const TimelinePage = () => {
     );
   }, [alerts, filter]);
 
-  const archiveRecords = sortedAlerts.filter((a) => a.camera === selectedCam);
-  const uniqueCams = [...new Set(alerts.map((a) => a.camera))];
+  const archiveRecords = sortedAlerts.filter((a) => a.camera_id === selectedCam);
+  const uniqueCams = [...new Set(alerts.map((a) => a.camera_id))];
 
   const formatTime = (str) => new Date(str).toLocaleString();
 
@@ -49,6 +51,8 @@ const TimelinePage = () => {
 
   const handleReportSubmit = (reportData) => {
     console.log("Report submitted:", reportData);
+    axios.post("http://localhost:8000/api/report", {"name": reportData.worker, 
+      "worker_id": reportData.worker_id })
     setShowModal(false);
   };
 
@@ -86,7 +90,7 @@ const TimelinePage = () => {
                   key={i}
                   className="alert-item d-flex justify-content-between align-items-center p-2 mb-2 rounded"
                 >
-                  <span>{formatTime(alert.timestamp)}</span>
+                  <span>{"CAM " + alert.camera_id + "/" +  formatTime(alert.timestamp)}</span>
                   <img
                     src={icons[alert.alert_type.toLowerCase()] || icons.zone}
                     alt={alert.alert_type}
@@ -112,7 +116,7 @@ const TimelinePage = () => {
                   className={`btn ${cam === selectedCam ? "btn-dark" : "btn-outline-dark"}`}
                   onClick={() => setSelectedCam(cam)}
                 >
-                  {cam}
+                  CAM {cam}
                 </button>
               ))}
             </div>
@@ -130,7 +134,7 @@ const TimelinePage = () => {
                 >
                   <div className="d-flex align-items-center card-in">
                     <img
-                      src={sampleImage}
+                      src={rec.img_url}
                       alt="record"
                       className="me-3"
                       style={{

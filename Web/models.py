@@ -31,3 +31,13 @@ class Images(Base):
     __tablename__ = "Images"
     id = Column(INT, nullable=False, autoincrement=True, primary_key=True)
     img = Column(LONGBLOB, nullable=False)
+
+class Reports(Base):
+    __tablename__ = "Reports"
+    id = Column(INT, nullable=False, autoincrement=True, primary_key=True)
+    name = Column(TEXT, nullable=False)
+    worker_id = Column(INT, nullable=False,unique=True)
+    Department = Column(TEXT, nullable=False)
+    Supervisor = Column(TEXT, nullable=False)
+    date = Column(TIMESTAMP, nullable=False)
+    status = Column(TEXT, nullable=False)

@@ -24,7 +24,7 @@ const ReportModal = ({ record, onClose, onSubmit }) => {
     const reportData = {
       ...form,
       timestamp: record.timestamp,
-      camera: record.camera,
+      camera: record.camera_id,
       alert_type: record.alert_type,
     };
     onSubmit(reportData);
@@ -38,7 +38,7 @@ const ReportModal = ({ record, onClose, onSubmit }) => {
         {/* Image View */}
         <div className="image-container mb-3" style={{ position: "relative" }}>
           <img
-            src={sampleImage}
+            src={record.img_url}
             alt="snapshot"
             className="img-fluid"
             onClick={() => setShowLightbox(true)}

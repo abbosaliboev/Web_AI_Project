@@ -56,7 +56,7 @@ def cameraTask(index):
                 ret, jpeg = cv2.imencode('.jpg', annotated_frame)
                 if not ret:
                     continue
-                gframe[index] = jpeg
+                gframe[index] = jpeg.tobytes()
                 yield (
                     b"--frame\r\n"
                     b"Content-Type: image/jpeg\r\n\r\n" + jpeg.tobytes() + b"\r\n"

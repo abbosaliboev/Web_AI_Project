@@ -240,7 +240,7 @@ const Camera = () => {
                 className="img-fluid"
               />
             </div> */}
-            <div className="detections bg-white rounded shadow-sm">
+            {/*<div className="detections bg-white rounded shadow-sm">
               <h6>{t("detections")}</h6>
               <div className="detect-list">
                 <div className="detect-row d-flex justify-content-between mb-2">
@@ -256,7 +256,7 @@ const Camera = () => {
                   <span>9</span>
                 </div>
               </div>
-            </div>
+            </div>*/}
           </div>
         </div>
       </div>
